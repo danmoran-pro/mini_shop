@@ -22,24 +22,30 @@ describe "When I visit merchant" do
 
     expect(current_path).to eq('/merchants/new')
   end
-    #   it "When I fill out with a new merchant's information and click submit a `POST` request is sent to '/merchants' and a new merchant is craeted" do
-    #     it "redirected to merchant Index and new Merchant is listed" do
-    #
-    #
-    #   end
-    # end
+    it "When I fill out with a new merchant's information and click submit a `POST` request is sent to '/merchants' and a new merchant is craeted" do
+      visit '/merchants/new'
+
+      name = "Apple DVNR"
+      address = "789 Dog st."
+      city = "Denver"
+      state = "Colorado"
+      zip = "80222"
+
+      fill_in "Name", with: name
+      fill_in "Address", with: address
+      fill_in "City", with: city
+      fill_in "State", with: state
+      fill_in "Zip", with: zip
+
+      click_on "Submit"
+
+      expect(current_path).to eq('/merchants')
+
+      expect(page).to have_content(@apple_nyc.name)
+      expect(page).to have_content(name)
+save_and_open_page
+    end
 end
-
-
-
-
-
-
-
-
-
-
-
 
 
 
